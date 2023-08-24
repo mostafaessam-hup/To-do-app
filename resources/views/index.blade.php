@@ -1,34 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layout')
+@section('title','Home page')
+@section('content')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+your tasks is
+<ol>@foreach($todos as $todo)
+    @if($todo->user_id==auth()->user()->id)
+    <li> {{$todo->tasks}}</li>
+    <a href="{{route('start.edit',$todo->id)}}">Edit</a>
+    <a href="{{route('start.show',$todo->id)}}">Show</a>
 
-<body>
-    this is all tasks
-    <br>
+    <form method="post" action="{{route('start.destroy',$todo->id)}}">
+        @csrf
+        @method('delete')
+        <input type="submit" value="DELETE " /> 
+        <br>
+        <br>
+        
+    </form>
+    @endif
+
+    @endforeach
     <a href="start/create">create new to-do</a>
-    <ul>@foreach($todos as $todo)
-        <li>{{$todo->tasks}}</li>
-        <li>id is {{$todo->id}}</li>
-        <a href="{{route('start.edit',$todo->id)}}">Edit</a>
-
-        <form method="post" action="{{route('start.destroy',$todo->id)}}">
-            @csrf
-            @method('delete')
-            <input type="submit" value="DELETE " />
-        </form>
-
-        @endforeach
-    </ul>
-
-
-
-
-
-</body>
-
-</html>
+</ol>
+@endsection
