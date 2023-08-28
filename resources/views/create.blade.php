@@ -11,7 +11,7 @@
     @csrf
     @method('post')
     <textarea name="tasks" placeholder="new To-do ">{{old('content')}}</textarea><br>
-    <textarea name="user_id" placeholder="UserId ">{{auth()->user()->id}}</textarea><br>
+    <textarea hidden name="user_id" placeholder="UserId ">{{auth()->user()->id}}</textarea><br>
     
     
 
