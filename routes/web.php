@@ -20,11 +20,14 @@ Route::view('/', 'layout');
 
 Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home');
-Route::get('/login','To_doController@login')->name('login');
-Route::get('/registration','To_doController@registration')->name('registration');
-Route::post('/login','To_doController@loginPost')->name("loginpost");
-Route::post('/registration','To_doController@registrationPost')->name("registrationpost");
-Route::get('/logout','To_doController@logout')->name('logout');
-Route::group(['middleware'=>'auth'],function(){
-    Route::resource('start', 'To_doController'); 
+
+Route::get('/login', 'AuthController@login')->name('login');
+Route::get('/registration', 'AuthController@registration')->name('registration');
+Route::get('/logout', 'AuthController@logout')->name('logout');
+
+Route::post('/login', 'AuthController@loginPost')->name("login.post");
+Route::post('/registration', 'AuthController@registrationPost')->name("registration.post");
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::resource('start', 'TodoController');
 });

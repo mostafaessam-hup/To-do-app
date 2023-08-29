@@ -14,5 +14,6 @@
     @csrf
     @method('put')
     <textarea name="tasks" placeholder="new To-do " >{{$test->tasks}}</textarea>
+    <textarea hidden name="user_id" placeholder="UserId ">{{auth()->user()->id}}</textarea><br>
     <input type="submit" value=" update " />
 </form>
