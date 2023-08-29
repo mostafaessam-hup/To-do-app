@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('todos', function (Blueprint $table) {
             $table->id();
             $table->string('tasks');
+            $table->foreignId('user_id')->constrained('users');
             $table->timestamps();
         });
     }

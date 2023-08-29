@@ -7,9 +7,13 @@
     </ul>
 </div>
 @endif
-<form method="post" action="{{route('start.store')}}" >
+<form method="post" action="{{route('start.store')}}">
     @csrf
     @method('post')
-    <textarea name="tasks" placeholder="new To-do ">{{old('content')}}</textarea>
+    <textarea name="tasks" placeholder="new To-do ">{{old('content')}}</textarea><br>
+    <textarea hidden name="user_id" placeholder="UserId ">{{auth()->user()->id}}</textarea><br>
+    
+    
+
     <input type="submit" value=" store " />
 </form>
