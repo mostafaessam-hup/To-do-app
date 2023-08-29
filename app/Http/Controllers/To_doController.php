@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TodoRequest;
 use App\Models\Todo;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -33,13 +34,12 @@ class To_doController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(TodoRequest $request)
     {
         $data = $request->validate([
-            'tasks' => "required|string",
-            'user_id'=>"required"
+            
         ]);
-        TOdo::create($data);
+        TOdo::create($request->validated());
         return redirect("start");
     }
 
