@@ -6,11 +6,12 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-               
+
                 @auth
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('logout')}}">Logout</a>
                 </li>
+
                 @else
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('login')}}">Login</a>
@@ -20,9 +21,10 @@
                 </li>
                 @endauth
             </ul>
+
             <span class="navbar-text">
                 @auth
-                {{auth()->user()->name}}
+                <a class="nav-link" href="{{route('profile')}}">{{auth()->user()->name}}</a>
                 @endauth
             </span>
         </div>

@@ -2,7 +2,7 @@
 @section('title','Home page')
 @section('content')
 
-your tasks is
+your tasks is :
 <ol>@foreach($todos as $todo)
     @if($todo->user_id==auth()->user()->id)
     <li> {{$todo->tasks}}</li>

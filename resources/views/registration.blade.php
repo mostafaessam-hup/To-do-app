@@ -19,7 +19,8 @@
         </div>
         @endif
     </div>
-    <form action="{{route('registrationpost')}}" method="post" class="ms-auto me-auto mt-auto" style="width: 500px">
+    
+    <form action="{{route('registration.post')}}" method="post" class="ms-auto me-auto mt-auto" style="width: 500px" enctype="multipart/form-data">
         @csrf
         <div class="mb-3">
             <label class="form-label">Name</label>
@@ -29,6 +30,12 @@
             <label class="form-label">Email address</label>
             <input type="email" class="form-control" name="email">
         </div>
+
+        <div class="mb-3">
+            <label class="form-label">Profile image</label>
+            <input type="file" class="form-control" name="image">
+        </div>
+
         <div class="mb-3">
             <label class="form-label">Password</label>
             <input type="password" class="form-control" name="password">

@@ -3,9 +3,12 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Hash;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
@@ -21,6 +24,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'image'
     ];
 
     /**
@@ -46,4 +50,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(Todo::class);
     }
+
+    public function setNameAttribute($value)
+    {
+        $this->attributes['name'] = ucwords(strtolower($value));
+    }
+    public function getNameAttribute($value)
+    {
+        return ucfirst(strtolower($value));
+    }
+
 }

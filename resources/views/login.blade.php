@@ -20,7 +20,7 @@
         </div>
         @endif
     </div>
-    <form action="{{route('loginpost')}}" method="post" class="ms-auto me-auto mt-auto" style="width: 500px">
+    <form action="{{route('login.post')}}" method="post" class="ms-auto me-auto mt-auto" style="width: 500px">
         @csrf
         <div class="mb-3">
             <label class="form-label">Email address</label>
